@@ -81,20 +81,4 @@ public class EnvioCorreo {
         t.sendMessage(mensaje, mensaje.getAllRecipients());
         t.close();
     }
-
-    public static void main(String[] args) {
-        
-        try {
-            String emailEmisor = "ale.fernandez@gmx.es";
-            String passwordEmisor = "PSPIESBelen";
-            
-            EnvioCorreo envioCorreo = new EnvioCorreo();
-            envioCorreo.enviarMensajeConAdjunto(emailEmisor,  "alefg2003@gmail.com",
-                    "Aviso de entrega de factura", "El importe de la factura"
-                    + " es 113,72€", emailEmisor, passwordEmisor,"..\\..\\Visual Studio 2022\\Componente\\Componente.sln"
-                            + "");
-        } catch(IOException | MessagingException e) {
-            System.out.println(e);
-        }
-    }
 }

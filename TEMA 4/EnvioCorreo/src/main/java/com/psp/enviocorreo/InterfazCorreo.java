@@ -61,6 +61,8 @@ public class InterfazCorreo extends javax.swing.JFrame {
             }
         });
 
+        txtBox_Ruta.setEditable(false);
+
         jLabel1.setText("Destinatario");
 
         jLabel2.setText("Asunto");
@@ -81,13 +83,13 @@ public class InterfazCorreo extends javax.swing.JFrame {
                 .addGap(56, 56, 56))
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtBox_Asunto, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBox_Destinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtBox_Destinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBox_Asunto))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -118,23 +120,18 @@ public class InterfazCorreo extends javax.swing.JFrame {
 
     private void btn_seleccionArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_seleccionArchivoMouseClicked
         JFileChooser jfseleccionador = new JFileChooser();
-        jfseleccionador.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        jfseleccionador.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int val = jfseleccionador.showOpenDialog(null);
 
-
         if (val == JFileChooser.OPEN_DIALOG) {
-            String pathAbsoluto = jfseleccionador.getSelectedFile().getAbsolutePath();
-            String directorioActual = jfseleccionador.getCurrentDirectory().getPath();
-            
+            String pathAbsoluto = jfseleccionador.getSelectedFile().getAbsolutePath();            
             txtBox_Ruta.setText(pathAbsoluto);
-
-        } else if (val == JFileChooser.CANCEL_OPTION) {
-            JOptionPane.showMessageDialog(null, "Proceso cancelado ");
         }
     }//GEN-LAST:event_btn_seleccionArchivoMouseClicked
 
     private void btn_envioCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_envioCorreoMouseClicked
         EnvioCorreo envioCorreo = new EnvioCorreo();
+        
         try {
             
             if(!"".equals(txtBox_Destinatario.getText()) && !"".equals(txtBox_Asunto.getText()) && !"".equals(txtArea_Texto.getText()) && !"".equals(txtBox_Ruta.getText())) {
@@ -145,7 +142,7 @@ public class InterfazCorreo extends javax.swing.JFrame {
                 txtBox_Asunto.setText("");
                 txtArea_Texto.setText("");
                 txtBox_Ruta.setText("");
-            } else {
+            } else {                
                 JOptionPane.showMessageDialog(rootPane, "Campos no rellenados.");
             }
             
