@@ -1,7 +1,5 @@
-
 package interfazautentificacion;
 
-import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -10,8 +8,8 @@ public class HASHManager {
     private static final String ALGORITMO = "SHA-256";
     
     public static byte[] getDigest(byte[] mensaje) throws NoSuchAlgorithmException {
-        
         byte[] resumen = null;
+        
         try {
             MessageDigest algoritmo = MessageDigest.getInstance(ALGORITMO);
             algoritmo.reset();
@@ -25,9 +23,8 @@ public class HASHManager {
     }
     
     public static boolean compararResumenes(byte[] resumen1, byte[] resumen2) throws NoSuchAlgorithmException {
+        boolean sonIguales;
         
-        boolean sonIguales
-                ;
         try {
             MessageDigest algoritmo = MessageDigest.getInstance(ALGORITMO);
             algoritmo.reset();
@@ -37,6 +34,5 @@ public class HASHManager {
         }
         
         return sonIguales;
-        
     }
 }

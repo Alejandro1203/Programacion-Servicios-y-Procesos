@@ -124,54 +124,55 @@ public class ControlUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Evento relacionado al botón de registrar
+     * @param evt 
+     */
     private void btn_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registerMouseClicked
-        if(!"".equals(txtbox_user.getText()) && !"".equals(txtbox_password.getText())) {
+        if(!"".equals(txtbox_user.getText().trim()) && !"".equals(txtbox_password.getText().trim())) {
             
-            if(InterfaceManager.ficheroExiste(txtbox_user.getText() + ".credencial")) {
-                lbl_info.setForeground(Color.RED);
-                lbl_info.setText(txtbox_user.getText() + " ya está registrado.");
+            if(InterfaceManager.ficheroExiste(txtbox_user.getText().trim() + ".credencial")) {
+                InterfaceManager.setLabel(lbl_info, Color.RED, txtbox_user.getText().trim() + " ya está registrado.");
             } else {
                 
                 try {
                     byte[] resumen = HASHManager.getDigest(txtbox_password.getText().getBytes(ENCODING_TYPE));
-                    Files.write(new File(txtbox_user.getText() + ".credencial").toPath(), resumen);
+                    Files.write(new File(txtbox_user.getText().trim() + ".credencial").toPath(), resumen);
                 } catch (IOException e) {
                     System.out.println(e);
                 } catch (NoSuchAlgorithmException ex) {
                     Logger.getLogger(ControlUsuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            
-                lbl_info.setForeground(Color.GREEN);
-                lbl_info.setText(txtbox_user.getText() + " registrado");
+                
+                InterfaceManager.setLabel(lbl_info, Color.GREEN, txtbox_user.getText().trim() + " registrado");
             }
-            
         } else {
-            lbl_info.setForeground(Color.RED);
-            lbl_info.setText("Por favor, rellene todos los campos.");
+            InterfaceManager.setLabel(lbl_info, Color.RED, "Por favor, rellene todos los campos.");
         }
     }//GEN-LAST:event_btn_registerMouseClicked
 
+    /**
+     * Evento relacionado al botón de inicio de sesión
+     * @param evt 
+     */
     private void btn_iniciosesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_iniciosesionMouseClicked
-        if(!"".equals(txtbox_user.getText()) && !"".equals(txtbox_password.getText())) {
+        if(!"".equals(txtbox_user.getText().trim()) && !"".equals(txtbox_password.getText().trim())) {
             
             try {
                 byte[] resumen = HASHManager.getDigest(txtbox_password.getText().getBytes(ENCODING_TYPE));
-                byte[] resumenAlmacenado = Files.readAllBytes(new File(txtbox_user.getText() + ".credencial").toPath());
+                byte[] resumenAlmacenado = Files.readAllBytes(new File(txtbox_user.getText().trim() + ".credencial").toPath());
                 
                 if(HASHManager.compararResumenes(resumen, resumenAlmacenado)){
-                    lbl_info.setForeground(Color.GREEN);
-                    lbl_info.setText("Bienvenido " + txtbox_user.getText() + ". Has iniciado sesión.");
+                    InterfaceManager.setLabel(lbl_info, Color.GREEN, "Bienvenido " + txtbox_user.getText().trim() + ". Has iniciado sesión.");
                 } else {
-                    lbl_info.setForeground(Color.RED);
-                    lbl_info.setText("Credenciales incorrectas.");
+                    InterfaceManager.setLabel(lbl_info, Color.RED, "Credenciales incorrectas.");
                 }
                 
             } catch (NoSuchAlgorithmException | IOException e) {
                 System.out.println(e);
             }
         } else {
-            lbl_info.setForeground(Color.RED);
-            lbl_info.setText("Por favor, rellene todos los campos.");
+            InterfaceManager.setLabel(lbl_info, Color.RED, "Por favor, rellene todos los campos.");
         }
     }//GEN-LAST:event_btn_iniciosesionMouseClicked
 

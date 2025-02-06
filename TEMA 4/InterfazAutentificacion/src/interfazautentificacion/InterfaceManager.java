@@ -12,7 +12,6 @@ public class InterfaceManager {
     
     public static boolean ficheroExiste(String ruta) {
         boolean existe = false;
-        
         File archivo = new File(ruta);
         
         if(archivo.exists()) {
@@ -26,6 +25,4 @@ public class InterfaceManager {
         label.setForeground(color);
         label.setText(texto);
     }
-    
-    
 }
