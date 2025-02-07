@@ -35,6 +35,7 @@ public class Http {
             if(response.statusCode() == 200) {
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode root = mapper.readTree(response.body());
+                respuesta = root.asText();
                 respuesta = root.get(node).asText();
             } else {
                 respuesta = "ERROR";
