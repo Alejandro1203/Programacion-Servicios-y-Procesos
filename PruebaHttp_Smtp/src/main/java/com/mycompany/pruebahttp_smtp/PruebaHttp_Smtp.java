@@ -12,9 +12,7 @@ public class PruebaHttp_Smtp {
     
     public static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) throws MessagingException, IOException {
-        Smtp smtp = new Smtp();
-        
+    public static void main(String[] args) throws MessagingException, IOException {        
         String esquema = "https://";
         String servidor = "fakestoreapi.com/";
         String categoria = "products";
