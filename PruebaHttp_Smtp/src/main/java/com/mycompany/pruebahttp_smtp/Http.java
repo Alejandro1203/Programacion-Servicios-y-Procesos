@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class Http {
     
-    public static String getRequest(String ruta, String node) {
+    public static String getRequest(String ruta) {
         String respuesta = "";
         
         HttpRequest request = HttpRequest.newBuilder()
@@ -35,15 +35,16 @@ public class Http {
             if(response.statusCode() == 200) {
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode root = mapper.readTree(response.body());
-                respuesta = root.asText();
-                respuesta = root.get(node).asText();
+                respuesta += "Id: " + root.get("id").asText() + "\n";
+                respuesta += "Title: " + root.get("title").asText() + "\n";
+                respuesta += "Price: " + root.get("price").asText() + "\n";
+                respuesta += "Description: " + root.get("description").asText() + "\n";
+                respuesta += "Category: " + root.get("category").asText();
             } else {
                 respuesta = "ERROR";
             }
             
-        } catch (IOException ex) {
-            Logger.getLogger(Http.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
+        } catch (IOException | InterruptedException ex) {
             Logger.getLogger(Http.class.getName()).log(Level.SEVERE, null, ex);
         }
         

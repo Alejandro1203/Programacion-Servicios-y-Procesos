@@ -23,10 +23,10 @@ import java.util.Properties;
  * @author Alejandro
  */
 public class Smtp {
-    private Properties properties;
-    private Session session;
+    private static Properties properties;
+    private static Session session;
     
-    private void setPropiedadesSMTP() {
+    private static void setPropiedadesSMTP() {
         properties = System.getProperties();
         properties.put("mail.smtp.auth", true);
         properties.put("mail.smtp.host", "mail.gmx.es");
@@ -35,14 +35,14 @@ public class Smtp {
         session = Session.getInstance(properties, null);
     }
     
-    private Transport conectarServidorSMTP(String direccionEmail, String password) throws NoSuchProviderException, MessagingException {
+    private static Transport conectarServidorSMTP(String direccionEmail, String password) throws NoSuchProviderException, MessagingException {
         Transport t = (Transport) session.getTransport("smtp");
         t.connect(properties.getProperty("mail.stmp.host"), direccionEmail, password);
         
         return t;        
     }
     
-    private Message crearNucleoMensaje(String emisor, String destinatario, String asunto) throws AddressException, MessagingException {
+    private static Message crearNucleoMensaje(String emisor, String destinatario, String asunto) throws AddressException, MessagingException {
         Message mensaje = new MimeMessage(session);
         mensaje.setFrom(new InternetAddress(emisor));   
         mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
@@ -51,7 +51,7 @@ public class Smtp {
         return mensaje;
     }
     
-    private Message crearMensajeConAdjunto(String emisor, String destinatario, String asunto, String textoMensaje, String pathFichero) throws MessagingException, IOException{
+    private static Message crearMensajeConAdjunto(String emisor, String destinatario, String asunto, String textoMensaje, String pathFichero) throws MessagingException, IOException{
         Message mensaje = crearNucleoMensaje(emisor, destinatario, asunto);
         
         BodyPart body = new MimeBodyPart();
@@ -68,7 +68,7 @@ public class Smtp {
         return mensaje;
     }
     
-    public void enviarMensajeConAdjunto(String emisor, String destinatario, String asunto, String textoMensaje, String pathFichero,
+    public static void enviarMensajeConAdjunto(String emisor, String destinatario, String asunto, String textoMensaje, String pathFichero,
                                         String direccionEmail, String password) throws MessagingException, IOException {
         
         setPropiedadesSMTP();
