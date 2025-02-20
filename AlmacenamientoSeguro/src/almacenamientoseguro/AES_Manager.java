@@ -18,7 +18,7 @@ public class AES_Manager {
     
     public static String cifrar(String textoEnClaro, Key clave) throws Exception {
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.DECRYPT_MODE, clave);
+        cipher.init(Cipher.ENCRYPT_MODE, clave);
         byte[] cipherText = cipher.doFinal(textoEnClaro.getBytes());
         
         return Base64.getEncoder().encodeToString(cipherText);

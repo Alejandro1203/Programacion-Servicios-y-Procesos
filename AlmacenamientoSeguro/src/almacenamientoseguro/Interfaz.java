@@ -25,6 +25,18 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
         initComponents();
     }
+    
+    private void clearForm() {
+        
+        try {
+            Thread.sleep(3000);
+            lbl_info.setText("");
+            txt_path_file.setText("");
+            txt_password.setText("");
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +55,8 @@ public class Interfaz extends javax.swing.JFrame {
         btn_encode = new javax.swing.JButton();
         btn_decode = new javax.swing.JButton();
         lbl_info = new java.awt.Label();
+        label3 = new java.awt.Label();
+        label4 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,56 +88,76 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        label3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label3.setText("ALMACENAMIENTO SEGURO");
+
+        label4.setFont(new java.awt.Font("Dialog", 0, 9)); // NOI18N
+        label4.setForeground(new java.awt.Color(102, 102, 102));
+        label4.setText("* la contraseña debe ser de longitud => 16");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_encode)
-                .addGap(90, 90, 90)
-                .addComponent(btn_decode)
-                .addGap(213, 213, 213))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_password))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(btn_select_file)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_path_file, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(23, 23, 23)
+                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(265, 265, 265)
-                        .addComponent(lbl_info, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btn_encode)
+                                    .addGap(46, 46, 46)
+                                    .addComponent(btn_decode)
+                                    .addGap(180, 180, 180))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(2, 2, 2)
+                                    .addComponent(btn_select_file)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txt_path_file, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(10, 10, 10)
+                                            .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(135, 135, 135)
+                                .addComponent(lbl_info, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(101, 101, 101)))))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap()
+                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_select_file, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_select_file)
                         .addComponent(txt_path_file, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_password)
-                    .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_decode)
                     .addComponent(btn_encode))
-                .addGap(39, 39, 39)
+                .addGap(32, 32, 32)
                 .addComponent(lbl_info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,8 +178,9 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_select_fileMouseClicked
 
     private void btn_encodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_encodeMouseClicked
-        System.out.println(txt_path_file.getText());
+        
         if(!"".equals(txt_path_file.getText()) && !"".equals(txt_password.getText().trim())) {
+            
             try {
                 Key clave = AES_Manager.obtenerClave(txt_password.getText().trim(), LONGITUD_BLOQUE);
                 String textoEnClaro = InterfaceManager.readFile(txt_path_file.getText());
@@ -157,6 +192,8 @@ public class Interfaz extends javax.swing.JFrame {
                 InterfaceManager.deleteFile(txt_path_file.getText().trim());
                 
                InterfaceManager.setLabel(lbl_info, Color.GREEN, "Creado nuevo archivo con el contenido cifrado.");
+               
+               clearForm();
             } catch (Exception ex) {
                 Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -166,8 +203,24 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_encodeMouseClicked
 
     private void btn_decodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_decodeMouseClicked
-        if("".equals(txt_path_file.getText()) && "".equals(txt_password.getText().trim())) {
+        
+        if(!"".equals(txt_path_file.getText()) && !"".equals(txt_password.getText().trim())) {
             
+            try {
+                Key clave = AES_Manager.obtenerClave(txt_password.getText().trim(), LONGITUD_BLOQUE);
+                String textoCifrado = InterfaceManager.readFile(txt_path_file.getText());
+                String textoEnClaro = AES_Manager.descifrar(textoCifrado, clave);
+                
+                InterfaceManager.createFile("contenido_descifrado", textoEnClaro);
+                
+                InterfaceManager.deleteFile(txt_path_file.getText());
+                
+                InterfaceManager.setLabel(lbl_info, Color.GREEN, "Creado nuevo archivo con el contenido descifrado.");
+                
+                clearForm();
+            } catch (Exception ex) {
+                Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             InterfaceManager.setLabel(lbl_info, Color.RED, "Campos no rellenados");
         }
@@ -214,6 +267,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton btn_select_file;
     private java.awt.Label label1;
     private java.awt.Label label2;
+    private java.awt.Label label3;
+    private java.awt.Label label4;
     private java.awt.Label lbl_info;
     private javax.swing.JTextField txt_password;
     private javax.swing.JTextField txt_path_file;
