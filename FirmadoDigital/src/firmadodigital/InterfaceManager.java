@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +20,10 @@ public class InterfaceManager {
     public static void setLabel(Label label, Color color, String text) {
         label.setForeground(color);
         label.setText(text);
+    }
+    
+    public static void generatePopUp(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
     }
     
     public static String readFile(String path) {
