@@ -1,4 +1,4 @@
-package firmadodigital;
+package firmadodigital.Managers;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,18 +40,6 @@ public class ClavesManager {
         fos.write(claves.getPrivate().getEncoded());
         fos.close();
     }
-
-    
-//    public static PublicKey getClavePublica() throws Exception {
-//
-//        File ficheroClavePublica = new File("clave_publica" + cont + ".key");
-//        byte[] bytesClavePublica = Files.readAllBytes(ficheroClavePublica.toPath());
-//        KeyFactory keyFactory = KeyFactory.getInstance("DSA");
-//        EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(bytesClavePublica);
-//        PublicKey clavePublica = keyFactory.generatePublic(publicKeySpec);
-//
-//        return clavePublica;
-//    }
     
     public static PublicKey getClavePublica(String rutaClavePublica) throws Exception {
 
@@ -64,18 +52,6 @@ public class ClavesManager {
         return clavePublica;
     }
 
-    
-//    public static PrivateKey getClavePrivada() throws Exception {
-//
-//        File ficheroClavePrivada = new File("clave_privada" + cont + ".key");
-//        byte[] bytesClavePrivada = Files.readAllBytes(ficheroClavePrivada.toPath());
-//        KeyFactory keyFactory = KeyFactory.getInstance("DSA");
-//        EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(bytesClavePrivada);
-//        PrivateKey clavePrivada = keyFactory.generatePrivate(privateKeySpec);
-//
-//        return clavePrivada;
-//    }
-//    
     public static PrivateKey getClavePrivada(String rutaClavePrivada) throws Exception {
 
         File ficheroClavePrivada = new File(rutaClavePrivada);

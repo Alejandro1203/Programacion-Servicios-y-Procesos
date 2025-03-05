@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package firmadodigital;
 
+import firmadodigital.Managers.InterfaceManager;
+import firmadodigital.Managers.ClavesManager;
+import firmadodigital.Managers.FirmaDigitalManager;
 import java.io.File;
 import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
 import java.security.Signature;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -42,6 +42,8 @@ public class InterfazFirmaDigital extends javax.swing.JFrame {
         btn_firmar = new javax.swing.JButton();
         btn_emisor = new javax.swing.JButton();
         label1 = new java.awt.Label();
+        label2 = new java.awt.Label();
+        label3 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +64,7 @@ public class InterfazFirmaDigital extends javax.swing.JFrame {
         });
 
         btn_firmar.setText("Firmar");
+        btn_firmar.setEnabled(false);
         btn_firmar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_firmarMouseClicked(evt);
@@ -69,6 +72,7 @@ public class InterfazFirmaDigital extends javax.swing.JFrame {
         });
 
         btn_emisor.setText("Emisor");
+        btn_emisor.setEnabled(false);
         btn_emisor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_emisorMouseClicked(evt);
@@ -78,6 +82,12 @@ public class InterfazFirmaDigital extends javax.swing.JFrame {
         label1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         label1.setText("Generador de Claves");
 
+        label2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label2.setText("Seleccione un Archivo");
+
+        label3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label3.setText("Firmado y Verificación");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,25 +96,28 @@ public class InterfazFirmaDigital extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(btn_claves))
-                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(205, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(btn_claves))
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_file_chooser)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_path_file, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(btn_firmar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addComponent(btn_emisor)
-                        .addGap(149, 149, 149)))
-                .addGap(58, 58, 58))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btn_file_chooser)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txt_path_file, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btn_firmar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btn_emisor)))))
+                        .addGap(0, 15, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,39 +126,41 @@ public class InterfazFirmaDigital extends javax.swing.JFrame {
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_claves)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_file_chooser)
                     .addComponent(txt_path_file, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
-                .addComponent(btn_firmar)
+                .addGap(18, 18, 18)
+                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_emisor)
-                .addGap(121, 121, 121))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_firmar)
+                    .addComponent(btn_emisor))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_file_chooserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_file_chooserMouseClicked
-        JFileChooser fileChooser = new JFileChooser();
+        txt_path_file.setText(InterfaceManager.fileChooser());
         
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
-        
-        int val = fileChooser.showOpenDialog(null);
-        
-        if(val == JFileChooser.OPEN_DIALOG) {
-            String patAbsolut = fileChooser.getSelectedFile().getAbsolutePath();
-            txt_path_file.setText(patAbsolut);
+        if(!"".equals(txt_path_file.getText())) {
+            btn_firmar.setEnabled(true);
+        } else {
+            btn_firmar.setEnabled(false);
+            btn_emisor.setEnabled(false);
         }
     }//GEN-LAST:event_btn_file_chooserMouseClicked
 
     private void btn_clavesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clavesMouseClicked
+        
         try {
             KeyPair claves = ClavesManager.generarClaves();
             ClavesManager.guardarClaves(claves);
-            InterfaceManager.generatePopUp("Claves generadas");
+            InterfaceManager.generateMessagePopUp(this, "Claves generadas");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -153,60 +168,32 @@ public class InterfazFirmaDigital extends javax.swing.JFrame {
 
     private void btn_firmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_firmarMouseClicked
         
-        
         try {
-   
-            JFileChooser fileChooser = new JFileChooser();
-
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
-
-            int val = fileChooser.showOpenDialog(null);
-
-            if (val == JFileChooser.OPEN_DIALOG) {
-                String patAbsolut = fileChooser.getSelectedFile().getAbsolutePath();
-                
-                Signature signature = Signature.getInstance("DSA");
-                signature.initSign(ClavesManager.getClavePrivada(patAbsolut));
-                signature.update(InterfaceManager.readFile(txt_path_file.getText()).getBytes());
-                firma = signature.sign();
-                System.out.println(firma);
+            firma = FirmaDigitalManager.firmaDigital(InterfaceManager.fileChooser(), txt_path_file.getText());
+            
+            if(firma[0] == 0) {
+                InterfaceManager.generateErrorPopUp(this, "Fallo al firmar");
+                btn_emisor.setEnabled(false);
+            } else {
+                InterfaceManager.generateMessagePopUp(this, "Firmado correctamente");
+                btn_emisor.setEnabled(true);
             }
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(InterfazFirmaDigital.class.getName()).log(Level.SEVERE, null, ex);
+            
         } catch (Exception ex) {
             Logger.getLogger(InterfazFirmaDigital.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_btn_firmarMouseClicked
 
     private void btn_emisorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_emisorMouseClicked
         
-        
         try {
-   
-            JFileChooser fileChooser = new JFileChooser();
-
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
-
-            int val = fileChooser.showOpenDialog(null);
-
-            if (val == JFileChooser.OPEN_DIALOG) {
-                String patAbsolut = fileChooser.getSelectedFile().getAbsolutePath();
-
-                Signature signature = Signature.getInstance("DSA");
-                signature.initVerify(ClavesManager.getClavePublica(patAbsolut));
-                signature.update(InterfaceManager.readFile(txt_path_file.getText()).getBytes());
-
-                if (signature.verify(firma)) {
-                    System.out.println("Mensaje Verificado");
-                } else {
-                    System.out.println("Atencion: el mensaje no es fiable");
-                }
+            
+            if(FirmaDigitalManager.firmaEmisor(InterfaceManager.fileChooser(), txt_path_file.getText(), firma)) {
+                InterfaceManager.generateMessagePopUp(this, "Mensaje verificado");
+            } else {
+                InterfaceManager.generateErrorPopUp(this, "Error de validación");
             }
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(InterfazFirmaDigital.class.getName()).log(Level.SEVERE, null, ex);
+            
         } catch (Exception ex) {
             Logger.getLogger(InterfazFirmaDigital.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -255,6 +242,8 @@ public class InterfazFirmaDigital extends javax.swing.JFrame {
     private javax.swing.JButton btn_file_chooser;
     private javax.swing.JButton btn_firmar;
     private java.awt.Label label1;
+    private java.awt.Label label2;
+    private java.awt.Label label3;
     private javax.swing.JTextField txt_path_file;
     // End of variables declaration//GEN-END:variables
 }
