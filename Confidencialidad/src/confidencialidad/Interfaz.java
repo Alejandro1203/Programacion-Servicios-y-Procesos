@@ -1,12 +1,9 @@
 package confidencialidad;
 
 import Managers.*;
-import java.io.File;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.KeyPair;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,6 +14,7 @@ import java.util.logging.Logger;
 public class Interfaz extends javax.swing.JFrame {
     
     private static final String ARCHIVO_CIFRADO = "datoscifrados.rsa";
+    private static byte[] firma;
 
     /**
      * Creates new form Interfaz
@@ -111,10 +109,19 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btn_cifrar_firmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cifrar_firmarMouseClicked
         InterfaceManager.createFile(ARCHIVO_CIFRADO);
+        String clavePrivada = InterfaceManager.fileChooser();
         
         try {
-            byte[] mensajeCifrado = RSAManager.cifrar(edt_mensaje.getText(), ClavesManager.getClavePrivada(InterfaceManager.fileChooser()));
+            byte[] mensajeCifrado = RSAManager.cifrar(edt_mensaje.getText(), ClavesManager.getClavePrivada(clavePrivada));
             InterfaceManager.writeFile(ARCHIVO_CIFRADO, mensajeCifrado);
+            
+            firma = FirmaDigitalManager.firmaDigital(clavePrivada, ARCHIVO_CIFRADO);
+            
+            if(firma[0] == 0) {
+                InterfaceManager.generateErrorPopUp(this, "Fallo al firmar");
+            } else {
+                InterfaceManager.generateMessagePopUp(this, "Firmado correctamente");
+            }
         } catch (Exception ex) {
             Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
