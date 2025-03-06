@@ -3,7 +3,6 @@ package Managers;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.logging.Level;
@@ -43,23 +42,25 @@ public class InterfaceManager {
         }
     }
     
-    public static String readFile(String path) {
-        String content  = "";
+    public static byte[] readBytesFile(String nameFile) {
+        byte[] content  = new byte[256];
         
         try {
-            BufferedReader bf = new BufferedReader(new FileReader(path));
-            String linea;
-            
-            while((linea = bf.readLine()) != null) {
-                content += linea + "\n";
-            }
-            
-            bf.close();
+            content = Files.readAllBytes(new File(nameFile).toPath());
         } catch (IOException ex) {
             Logger.getLogger(InterfaceManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return content.trim();
+        return content;
+    }
+    
+    public static void createFile(String nameFile) {
+        try {
+            File file = new File(nameFile);
+            file.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(InterfaceManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static void writeFile(String nameFile, byte[] mensaje) {
@@ -68,41 +69,5 @@ public class InterfaceManager {
         } catch (IOException ex) {
             Logger.getLogger(InterfaceManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public static void createFile(String nameFile) {
-        try {
-            File file = new File(nameFile);
-            
-            file.createNewFile();
-            
-//            FileWriter fileWriter = new FileWriter(file);
-//            
-//            fileWriter.write(contentFile);
-//            fileWriter.close();
-        } catch (IOException ex) {
-            Logger.getLogger(InterfaceManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-//    public static void createFile(String nameFile, String contentFile) {
-//        try {
-//            File file = new File(nameFile);
-//            
-//            file.createNewFile();
-//            
-//            FileWriter fileWriter = new FileWriter(file);
-//            
-//            fileWriter.write(contentFile);
-//            fileWriter.close();
-//        } catch (IOException ex) {
-//            Logger.getLogger(InterfaceManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-    
-    public static void deleteFile(String path) {
-        File file = new File(path);
-        
-        file.delete();
     }
 }

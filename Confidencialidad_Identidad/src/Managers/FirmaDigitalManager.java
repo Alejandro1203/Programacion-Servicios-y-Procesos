@@ -11,15 +11,15 @@ import java.util.logging.Logger;
  */
 public class FirmaDigitalManager {
     
-    public static byte[] firmaDigital(String path, String pathFile) {
+    public static byte[] firmaDigital(String pathKey, String nameFile) {
         byte[] firma = new byte[256];
     
         try {
 
-            if (!"".equals(path)) {
-                Signature signature = Signature.getInstance("DSA");
-                signature.initSign(ClavesManager.getClavePrivada(path));
-                signature.update(InterfaceManager.readFile(pathFile).getBytes());
+            if (!"".equals(pathKey)) {
+                Signature signature = Signature.getInstance("SHA256withRSA");
+                signature.initSign(ClavesManager.getClavePrivada(pathKey));
+                signature.update(InterfaceManager.readBytesFile(nameFile));
                 firma = signature.sign();
             }
         } catch (NoSuchAlgorithmException ex) {
@@ -29,16 +29,16 @@ public class FirmaDigitalManager {
         }
         
         return firma;
-    }  
+    } 
     
-    public static boolean firmaEmisor(String pathAbsolut, String pathFile, byte[] firma) {
+    public static boolean firmaEmisor(String pathKey, String nameFile, byte[] firma) {
         boolean firmado = false;
         
         try {
-            if (!"".equals(pathAbsolut)) {
-                Signature signature = Signature.getInstance("DSA");
-                signature.initVerify(ClavesManager.getClavePublica(pathAbsolut));
-                signature.update(InterfaceManager.readFile(pathFile).getBytes());
+            if (!"".equals(pathKey)) {
+                Signature signature = Signature.getInstance("SHA256withRSA");
+                signature.initVerify(ClavesManager.getClavePublica(pathKey));
+                signature.update(InterfaceManager.readBytesFile(nameFile));
 
                 if (signature.verify(firma)) {
                     firmado = true;

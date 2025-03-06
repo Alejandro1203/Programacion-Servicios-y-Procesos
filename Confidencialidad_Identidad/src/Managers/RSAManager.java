@@ -10,7 +10,7 @@ import javax.crypto.Cipher;
  */
 public class RSAManager {
     
-    public static byte[] cifrar(String mensaje, Key clave) throws Exception {
+    public static byte[] cifrar(String mensaje, Key clave) throws Exception{
         
         Cipher encryptCipher = Cipher.getInstance("RSA");
         encryptCipher.init(Cipher.ENCRYPT_MODE, clave);
