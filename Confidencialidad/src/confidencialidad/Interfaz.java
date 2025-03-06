@@ -3,7 +3,6 @@ package confidencialidad;
 import Managers.*;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -141,10 +140,19 @@ public class Interfaz extends javax.swing.JFrame {
     private void btn_descifrar_validarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_descifrar_validarMouseClicked
         
         try {
-            byte[] mensajeCifrado = InterfaceManager.readBytesFile(ARCHIVO_CIFRADO);
-            byte[] mensajeDescifrado = RSAManager.descifrar(mensajeCifrado, ClavesManager.getClavePublica(InterfaceManager.fileChooser()));
+            String clavePublica = InterfaceManager.fileChooser();
+
+            if (FirmaDigitalManager.firmaEmisor(clavePublica, ARCHIVO_CIFRADO, firma)) {
+                InterfaceManager.generateMessagePopUp(this, "Mensaje verificado");
+                byte[] mensajeCifrado = InterfaceManager.readBytesFile(ARCHIVO_CIFRADO);
+                byte[] mensajeDescifrado = RSAManager.descifrar(mensajeCifrado, ClavesManager.getClavePublica(clavePublica));
+
+                txt_descifrado.setText(new String(mensajeDescifrado, StandardCharsets.UTF_8));
+            } else {
+                InterfaceManager.generateErrorPopUp(this, "Error de validación");
+            }
+
             
-            txt_descifrado.setText(new String(mensajeDescifrado, StandardCharsets.UTF_8));
         } catch (Exception ex) {
             Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
