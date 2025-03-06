@@ -3,7 +3,6 @@ package Managers;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.logging.Level;
@@ -43,30 +42,10 @@ public class InterfaceManager {
         }
     }
     
-    public static String readFile(String path) {
-        String content  = "";
-        
-        try {
-            BufferedReader bf = new BufferedReader(new FileReader(path));
-            String linea;
-            
-            while((linea = bf.readLine()) != null) {
-                content += linea + "\n";
-            }
-            
-            bf.close();
-        } catch (IOException ex) {
-            Logger.getLogger(InterfaceManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return content.trim();
-    }
-    
     public static byte[] readBytesFile(String nameFile) {
         byte[] content  = new byte[256];
         
         try {
-            
             content = Files.readAllBytes(new File(nameFile).toPath());
         } catch (IOException ex) {
             Logger.getLogger(InterfaceManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,9 +57,7 @@ public class InterfaceManager {
     public static void createFile(String nameFile) {
         try {
             File file = new File(nameFile);
-            
             file.createNewFile();
-            
         } catch (IOException ex) {
             Logger.getLogger(InterfaceManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -93,5 +70,4 @@ public class InterfaceManager {
             Logger.getLogger(InterfaceManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }
