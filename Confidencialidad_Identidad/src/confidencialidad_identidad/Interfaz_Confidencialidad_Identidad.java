@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class Interfaz_Confidencialidad_Identidad extends javax.swing.JFrame {
     
-    byte[] firma;
+    private static byte[] firma;
 
     /**
      * Creates new form Interfaz_Confidencialidad_Idetidad
