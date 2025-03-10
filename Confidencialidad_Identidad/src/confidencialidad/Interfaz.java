@@ -31,21 +31,23 @@ public class Interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_cifrar_firmar = new javax.swing.JButton();
+        btn_cifrar = new javax.swing.JButton();
         edt_mensaje = new javax.swing.JTextField();
         btn_claves = new javax.swing.JButton();
-        btn_descifrar_validar = new javax.swing.JButton();
+        btn_validar = new javax.swing.JButton();
         txt_descifrado = new javax.swing.JTextField();
         label1 = new java.awt.Label();
         label2 = new java.awt.Label();
         label3 = new java.awt.Label();
+        btn_firmar = new javax.swing.JButton();
+        btn_descifrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_cifrar_firmar.setText("Cifrar y firmar");
-        btn_cifrar_firmar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_cifrar.setText("Cifrar");
+        btn_cifrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_cifrar_firmarMouseClicked(evt);
+                btn_cifrarMouseClicked(evt);
             }
         });
 
@@ -57,11 +59,11 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        btn_descifrar_validar.setText("Validar y descifrar");
-        btn_descifrar_validar.setEnabled(false);
-        btn_descifrar_validar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_validar.setText("Validar");
+        btn_validar.setEnabled(false);
+        btn_validar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_descifrar_validarMouseClicked(evt);
+                btn_validarMouseClicked(evt);
             }
         });
 
@@ -76,17 +78,28 @@ public class Interfaz extends javax.swing.JFrame {
         label3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         label3.setText("Validar y descifrar el mensaje");
 
+        btn_firmar.setText("Firmar");
+        btn_firmar.setEnabled(false);
+        btn_firmar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_firmarMouseClicked(evt);
+            }
+        });
+
+        btn_descifrar.setText("Descifrar");
+        btn_descifrar.setEnabled(false);
+        btn_descifrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_descifrarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(btn_descifrar_validar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_descifrado, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(btn_claves))
@@ -95,16 +108,26 @@ public class Interfaz extends javax.swing.JFrame {
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(edt_mensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_cifrar_firmar))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(12, 12, 12)
+                            .addComponent(btn_validar)
+                            .addGap(18, 18, 18)
+                            .addComponent(btn_descifrar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_descifrado, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(edt_mensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btn_cifrar)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(btn_firmar))))))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,63 +140,56 @@ public class Interfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edt_mensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cifrar_firmar))
+                    .addComponent(btn_cifrar)
+                    .addComponent(btn_firmar))
                 .addGap(30, 30, 30)
                 .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_descifrar_validar)
-                    .addComponent(txt_descifrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_validar)
+                    .addComponent(txt_descifrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_descifrar))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_cifrar_firmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cifrar_firmarMouseClicked
+    private void btn_cifrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cifrarMouseClicked
 
         try {
             InterfaceManager.createFile(ARCHIVO_CIFRADO);
-            String clavePrivada = InterfaceManager.fileChooser(); 
             
-            if (!"".equals(clavePrivada)) {
-
+            String clavePublica = InterfaceManager.fileChooser();
+       
+            if (!"".equals(clavePublica)) {
                 if (!"".equals(edt_mensaje.getText())) {
-                    byte[] mensajeCifrado = RSAManager.cifrar(edt_mensaje.getText(), ClavesManager.getClavePrivada(clavePrivada));
+                    byte[] mensajeCifrado = RSAManager.cifrar(edt_mensaje.getText(), ClavesManager.getClavePublica(clavePublica));
                     InterfaceManager.writeFile(ARCHIVO_CIFRADO, mensajeCifrado);
-
-                    firma = FirmaDigitalManager.firmaDigital(clavePrivada, ARCHIVO_CIFRADO);
-
-                    if (firma[0] == 0) {
-                        InterfaceManager.generateErrorPopUp(this, "Fallo al firmar");
-                        btn_descifrar_validar.setEnabled(false);
-                    } else {
-                        InterfaceManager.generateMessagePopUp(this, "Firmado correctamente");
-                        btn_descifrar_validar.setEnabled(true);
-                        edt_mensaje.setText("");
-                    }
+                    btn_firmar.setEnabled(true);
                 } else {
                     InterfaceManager.generateErrorPopUp(this, "No hay mensaje que se pueda cifrar");
                 }
             }
-            
         } catch (Exception ex) {
             Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_cifrar_firmarMouseClicked
+    }//GEN-LAST:event_btn_cifrarMouseClicked
 
     private void btn_clavesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_clavesMouseClicked
         
         try {
             KeyPair claves = ClavesManager.generarClaves();
-            ClavesManager.guardarClaves(claves);
+            ClavesManager.guardarClaves(claves, "emisor");
+            claves = ClavesManager.generarClaves();
+            ClavesManager.guardarClaves(claves, "receptor");
             InterfaceManager.generateMessagePopUp(this, "Claves generadas");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btn_clavesMouseClicked
 
-    private void btn_descifrar_validarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_descifrar_validarMouseClicked
+    private void btn_validarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_validarMouseClicked
         
         try {
             String clavePublica = InterfaceManager.fileChooser();
@@ -181,10 +197,7 @@ public class Interfaz extends javax.swing.JFrame {
             if (!"".equals(clavePublica)) {
                 if (FirmaDigitalManager.firmaEmisor(clavePublica, ARCHIVO_CIFRADO, firma)) {
                     InterfaceManager.generateMessagePopUp(this, "Mensaje verificado");
-                    byte[] mensajeCifrado = InterfaceManager.readBytesFile(ARCHIVO_CIFRADO);
-                    byte[] mensajeDescifrado = RSAManager.descifrar(mensajeCifrado, ClavesManager.getClavePublica(clavePublica));
-
-                    txt_descifrado.setText(new String(mensajeDescifrado, StandardCharsets.UTF_8));
+                    btn_descifrar.setEnabled(true);
                 } else {
                     InterfaceManager.generateErrorPopUp(this, "Error de validación");
                 }
@@ -193,7 +206,37 @@ public class Interfaz extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_descifrar_validarMouseClicked
+    }//GEN-LAST:event_btn_validarMouseClicked
+
+    private void btn_firmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_firmarMouseClicked
+        
+        try {
+            firma = FirmaDigitalManager.firmaDigital("clave_privada_emisor.key", ARCHIVO_CIFRADO);
+
+            if (firma[0] == 0) {
+                InterfaceManager.generateErrorPopUp(this, "Fallo al firmar");
+                btn_validar.setEnabled(false);
+            } else {
+                InterfaceManager.generateMessagePopUp(this, "Firmado correctamente");
+                btn_validar.setEnabled(true);
+                edt_mensaje.setText("");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btn_firmarMouseClicked
+
+    private void btn_descifrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_descifrarMouseClicked
+        
+        try {
+            byte[] mensajeCifrado = InterfaceManager.readBytesFile(ARCHIVO_CIFRADO);
+            byte[] mensajeDescifrado = RSAManager.descifrar(mensajeCifrado, ClavesManager.getClavePrivada("clave_privada_receptor.key"));
+
+            txt_descifrado.setText(new String(mensajeDescifrado, StandardCharsets.UTF_8));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btn_descifrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -231,9 +274,11 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cifrar_firmar;
+    private javax.swing.JButton btn_cifrar;
     private javax.swing.JButton btn_claves;
-    private javax.swing.JButton btn_descifrar_validar;
+    private javax.swing.JButton btn_descifrar;
+    private javax.swing.JButton btn_firmar;
+    private javax.swing.JButton btn_validar;
     private javax.swing.JTextField edt_mensaje;
     private java.awt.Label label1;
     private java.awt.Label label2;

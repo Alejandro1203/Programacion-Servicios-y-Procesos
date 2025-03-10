@@ -26,12 +26,6 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="btn_descifrar_validar" min="-2" pref="129" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_descifrado" min="-2" pref="513" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="btn_claves" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -41,21 +35,33 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label2" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="edt_mensaje" min="-2" pref="517" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn_cifrar_firmar" min="-2" max="-2" attributes="0"/>
+                      <Component id="label3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="btn_validar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btn_descifrar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txt_descifrado" min="-2" pref="513" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="label2" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="edt_mensaje" min="-2" pref="517" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btn_cifrar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="btn_firmar" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="label3" min="-2" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace pref="120" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,14 +76,16 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="edt_mensaje" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_cifrar_firmar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_cifrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_firmar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="label3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btn_descifrar_validar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_validar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_descifrado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_descifrar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
@@ -85,12 +93,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btn_cifrar_firmar">
+    <Component class="javax.swing.JButton" name="btn_cifrar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cifrar y firmar"/>
+        <Property name="text" type="java.lang.String" value="Cifrar"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_cifrar_firmarMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_cifrarMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="edt_mensaje">
@@ -104,13 +112,13 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_clavesMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_descifrar_validar">
+    <Component class="javax.swing.JButton" name="btn_validar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Validar y descifrar"/>
+        <Property name="text" type="java.lang.String" value="Validar"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_descifrar_validarMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_validarMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_descifrado">
@@ -141,6 +149,24 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Validar y descifrar el mensaje"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_firmar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Firmar"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_firmarMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_descifrar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descifrar"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_descifrarMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
